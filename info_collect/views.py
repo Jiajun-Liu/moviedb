@@ -115,9 +115,14 @@ def batch_add_pmd(request):
         #print(request.POST.get('producer'))
         for c in request.POST.getlist('producer'):
             #print('getting', c)
-            o = ProducerMovieDuty(producer=Producer.objects.get(pk=c), movie=Movie.objects.get(pk=request.POST[
-                'movie']), duty=Duty.objects.get(pk=request.POST['duty']),company=ProdCompany.objects.get(pk=request.POST[
-                'company']))
+
+            if request.POST.get('company'):
+                o = ProducerMovieDuty(producer=Producer.objects.get(pk=c), movie=Movie.objects.get(pk=request.POST[
+                    'movie']), duty=Duty.objects.get(pk=request.POST['duty']),company=ProdCompany.objects.get(
+                    pk=request.POST.get('company')))
+            else:
+                o = ProducerMovieDuty(producer=Producer.objects.get(pk=c), movie=Movie.objects.get(pk=request.POST[
+                    'movie']), duty=Duty.objects.get(pk=request.POST['duty']), company=None)
             #try:
             #print('adding',o)
             o.save()

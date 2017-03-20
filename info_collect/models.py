@@ -54,7 +54,7 @@ class ProducerMovieDuty(models.Model):
     producer = models.ForeignKey(Producer, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     duty = models.ForeignKey(Duty, on_delete=models.CASCADE)
-    company = models.ForeignKey(ProdCompany, on_delete=models.CASCADE, default=None)
+    company = models.ForeignKey(ProdCompany, on_delete=models.CASCADE, default=None, null=True)
 
     def __unicode__(self):
         return '%s, %s, %s, %s' % (self.producer.name, self.movie.title, self.duty.name, self.company.name if
