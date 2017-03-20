@@ -35,8 +35,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'bootstrap3',
-    'json_field',
+    #'bootstrap3',
+    #'json_field',
     'dal',
     'dal_select2',
     'django_extensions',

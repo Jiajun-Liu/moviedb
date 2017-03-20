@@ -1,5 +1,5 @@
 from django.db import models
-from json_field import JSONField
+#from json_field import JSONField
 from dal import autocomplete
 
 
