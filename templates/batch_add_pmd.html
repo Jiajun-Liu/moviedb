@@ -165,6 +165,44 @@
 
                         </div>
 
+                        <div class="form-row field-company">
+
+
+                            <div>
+
+
+                                <label class="required" for="id_movie">Company:</label>
+
+
+                                <div class="related-widget-wrapper">
+                                    <select data-autocomplete-light-function="select2"
+                                            data-autocomplete-light-url="/info_collect/company-autocomplete/"
+                                            id="id_company" name="company" required>
+                                        <option value="" selected="selected">---------</option>
+                                    </select>
+
+
+                                    <a class="related-widget-wrapper-link change-related" id="change_id_company"
+                                       data-href-template="/admin/info_collect/company/__fk__/change/?_to_field=id&amp;_popup=1"
+                                       title="Change selected company">
+                                        <img src="/static/admin/img/icon-changelink.svg" alt="Change"/>
+                                    </a>
+
+
+                                    <a class="related-widget-wrapper-link add-related" id="add_id_company"
+                                       href="/admin/info_collect/company/add/?_to_field=id&amp;_popup=1"
+                                       title="Add another company">
+                                        <img src="/static/admin/img/icon-addlink.svg" alt="Add"/>
+                                    </a>
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
                         <div class="form-row field-duty">
 
 

@@ -1,21 +1,23 @@
 from django.contrib import admin
 from .models import *
 from .forms import *
-from django.shortcuts import render, render_to_response,HttpResponseRedirect
+from django.shortcuts import render, render_to_response, HttpResponseRedirect
 from django.template import RequestContext
 from .models import *
 from dal_select2.views import Select2QuerySetView
 from .forms import BatchAddForm
 from django.conf.urls import url
 
+
 class MovieAdmin(admin.ModelAdmin):
     fields = ('title', 'year', 'boxoffice', 'code')
-    list_display = ('title', 'year', 'boxoffice', 'code')
-    search_fields = ('title', 'year', 'code')
+    list_display = ('title', 'year', 'boxoffice')
+    search_fields = ('title', 'year')
 
     autocomplete_lookup_fields = {
         'title': ['title'],
     }
+
 
 class ProducerAdmin(admin.ModelAdmin):
     fields = ('name',)
@@ -36,9 +38,9 @@ class ProdCompanyAdmin(admin.ModelAdmin):
 
 
 class ProducerMovieDutyAdmin(admin.ModelAdmin):
-    fields = ('producer', 'movie', 'duty')
-    list_display = ('producer_name', 'movie_name', 'duty_name')
-    search_fields = ('producer__name', 'movie__name', 'duty__name')
+    fields = ('producer', 'movie', 'duty', 'company')
+    list_display = ('producer_name', 'movie_name', 'duty_name', 'company_name')
+    search_fields = ('producer__name', 'movie__title', 'duty__name', 'company__name')
 
     def producer_name(self, obj):
         return u'%s' % obj.producer.name
@@ -54,6 +56,15 @@ class ProducerMovieDutyAdmin(admin.ModelAdmin):
         return u'%s' % obj.duty.name
 
     duty_name.short_description = u'Duty'
+
+    def company_name(self, obj):
+        if obj.company:
+            return u'%s' % obj.company.name
+        else:
+            return 'None'
+
+    company_name.short_description = u'Company'
+
     form = ProducerMovieDutyForm
 
 
@@ -117,10 +128,10 @@ admin.site.register(Producer, ProducerAdmin)
 admin.site.register(Duty, DutyAdmin)
 admin.site.register(ProducerMovieDuty, ProducerMovieDutyAdmin)
 admin.site.register(CompanyMovieDuty, CompanyMovieDutyAdmin)
-#admin.site.register(BtachAddCMDAdmin)
+# admin.site.register(BtachAddCMDAdmin)
 
 
 admin.site.site_header = 'Movie Production Industry Database Administration'
 admin.site.site_title = 'Movie Production Industry Database Administration'
 admin.site.index_title = 'Administration'
-#admin.site.add_action()
+# admin.site.add_action()
