@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head>
+    <title>Batch add producer movie duty | Movie Company Industry Database Administration</title>
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css"/>
+
+
+    <script type="text/javascript" src="/admin/jsi18n/"></script>
+    <link href="/static/autocomplete_light/vendor/select2/dist/css/select2.css" type="text/css" media="all"
+          rel="stylesheet"/>
+    <link href="/static/autocomplete_light/select2.css" type="text/css" media="all" rel="stylesheet"/>
+    <script type="text/javascript" src="/static/admin/js/core.js"></script>
+    <script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+    <script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+    <script type="text/javascript" src="/static/admin/js/actions.js"></script>
+    <script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+    <script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+    <script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+    <script type="text/javascript" src="/static/autocomplete_light/jquery.init.js"></script>
+    <script type="text/javascript" src="/static/autocomplete_light/autocomplete.init.js"></script>
+    <script type="text/javascript" src="/static/autocomplete_light/vendor/select2/dist/js/select2.full.js"></script>
+    <script type="text/javascript" src="/static/autocomplete_light/forward.js"></script>
+    <script type="text/javascript" src="/static/autocomplete_light/select2.js"></script>
+
+    <meta name="robots" content="NONE,NOARCHIVE"/>
+</head>
+
+
+<body class=" app-info_collect model-producermovieduty change-form"
+      data-admin-utc-offset="28800">
+
+<!-- Container -->
+<div id="container">
+
+
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+
+            <h1 id="site-name"><a href="/admin/">Movie Production Industry Database Administration</a></h1>
+
+        </div>
+
+
+        <div id="user-tools">
+
+            Welcome,
+            <strong>{{ user }}</strong>.
+
+
+            <a href="/">View site</a> /
+
+
+            <a href="/admin/password_change/">Change password</a> /
+
+            <a href="/admin/logout/">Log out</a>
+
+        </div>
+
+
+    </div>
+    <!-- END Header -->
+
+    <div class="breadcrumbs">
+        <a href="/admin/">Home</a>
+        &rsaquo; <a href="/admin/info_collect/">Info_Collect</a>
+        &rsaquo; <a href="/admin/info_collect/producermovieduty/">Producer movie dutys</a>
+        &rsaquo; Add producer movie duty
+    </div>
+
+
+    <!-- Content -->
+    <div id="content" class="colM">
+
+        <h1>Add producer movie duty</h1>
+        <div id="content-main">
+
+
+            <form enctype="multipart/form-data" action="" method="post" id="batch_producermovieduty_form"
+                  novalidate>
+                {% csrf_token %}
+
+                <div>
+
+
+                    <fieldset class="module aligned ">
+
+
+                        <div class="form-row field-producer">
+
+
+                            <div>
+
+
+                                <label class="required" for="id_producer">Producer:</label>
+
+
+                                <div class="related-widget-wrapper">
+                                    <select multiple="multiple" data-autocomplete-light-function="select2"
+                                            data-autocomplete-light-url="/info_collect/producer-autocomplete/"
+                                            id="id_producer" name="producer" required>
+                                        <option value="">---------</option>
+                                    </select>
+
+
+                                    <a class="related-widget-wrapper-link change-related" id="change_id_producer"
+                                       data-href-template="/admin/info_collect/producer/__fk__/change/?_to_field=id&amp;_popup=1"
+                                       title="Change selected producer">
+                                        <img src="/static/admin/img/icon-changelink.svg" alt="Change"/>
+                                    </a>
+
+
+                                    <a class="related-widget-wrapper-link add-related" id="add_id_producer"
+                                       href="/admin/info_collect/producer/add/?_to_field=id&amp;_popup=1"
+                                       title="Add another prod producer">
+                                        <img src="/static/admin/img/icon-addlink.svg" alt="Add"/>
+                                    </a>
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-row field-movie">
+
+
+                            <div>
+
+
+                                <label class="required" for="id_movie">Movie:</label>
+
+
+                                <div class="related-widget-wrapper">
+                                    <select data-autocomplete-light-function="select2"
+                                            data-autocomplete-light-url="/info_collect/movie-autocomplete/"
+                                            id="id_movie" name="movie" required>
+                                        <option value="" selected="selected">---------</option>
+                                    </select>
+
+
+                                    <a class="related-widget-wrapper-link change-related" id="change_id_movie"
+                                       data-href-template="/admin/info_collect/movie/__fk__/change/?_to_field=id&amp;_popup=1"
+                                       title="Change selected movie">
+                                        <img src="/static/admin/img/icon-changelink.svg" alt="Change"/>
+                                    </a>
+
+
+                                    <a class="related-widget-wrapper-link add-related" id="add_id_movie"
+                                       href="/admin/info_collect/movie/add/?_to_field=id&amp;_popup=1"
+                                       title="Add another movie">
+                                        <img src="/static/admin/img/icon-addlink.svg" alt="Add"/>
+                                    </a>
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-row field-duty">
+
+
+                            <div>
+
+
+                                <label class="required" for="id_duty">Duty:</label>
+
+
+                                <div class="related-widget-wrapper">
+                                    <select data-autocomplete-light-function="select2"
+                                            data-autocomplete-light-url="/info_collect/duty-autocomplete/" id="id_duty"
+                                            name="duty" required>
+                                        <option value="" selected="selected">---------</option>
+                                    </select>
+
+
+                                    <a class="related-widget-wrapper-link change-related" id="change_id_duty"
+                                       data-href-template="/admin/info_collect/duty/__fk__/change/?_to_field=id&amp;_popup=1"
+                                       title="Change selected duty">
+                                        <img src="/static/admin/img/icon-changelink.svg" alt="Change"/>
+                                    </a>
+
+
+                                    <a class="related-widget-wrapper-link add-related" id="add_id_duty"
+                                       href="/admin/info_collect/duty/add/?_to_field=id&amp;_popup=1"
+                                       title="Add another duty">
+                                        <img src="/static/admin/img/icon-addlink.svg" alt="Add"/>
+                                    </a>
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+
+
+                    <div class="submit-row">
+                        <input type="submit" value="Save" class="default" name="_save"/>
+                    </div>
+
+                    <div>
+                        {% if added %}
+                            Added {{ added }}.
+                        {% endif %}
+                    </div>
+
+
+                    <script type="text/javascript"
+                            id="django-admin-form-add-constants"
+                            src="/static/admin/js/change_form.js"
+
+                            data-model-name="producermovieduty"
+                    >
+                    </script>
+
+
+                    <script type="text/javascript"
+                            id="django-admin-prepopulated-fields-constants"
+                            src="/static/admin/js/prepopulate_init.js"
+                            data-prepopulated-fields="[]">
+                    </script>
+
+
+                </div>
+            </form>
+        </div>
+
+
+        <br class="clear"/>
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+        <div>
+
+        <ul>
+            <li>
+                <a href="/info_collect/batch_add_cmd/" class="addlink">Batch add company movie duty</a>
+                <a href="/info_collect/batch_add_pmd/" class="addlink">Batch add producer movie duty</a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

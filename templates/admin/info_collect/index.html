@@ -1,0 +1,14 @@
+{% extends "admin:info_collect/index.html" %}
+
+{% block sidebar %}
+{{ block.super }}
+        <div>
+
+        <ul>
+            <li>
+                <a href="/info_collect/batch_add_cmd/" class="addlink">Batch add company movie duty</a>
+                <a href="/info_collect/batch_add_pmd/" class="addlink">Batch add producer movie duty</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
