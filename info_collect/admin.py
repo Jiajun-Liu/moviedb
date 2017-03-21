@@ -10,7 +10,7 @@ from django.conf.urls import url
 
 
 class MovieAdmin(admin.ModelAdmin):
-    fields = ('title', 'year', 'boxoffice', 'code')
+    fields = ('title', 'year', 'boxoffice')
     list_display = ('title', 'year', 'boxoffice')
     search_fields = ('title', 'year')
 
