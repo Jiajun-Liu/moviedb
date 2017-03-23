@@ -60,7 +60,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'moviedb.urls'
-STATIC_ROOT = '/Users/jiajun/Dropbox/Code/moviedb/static/'
+STATIC_ROOT = '/home/jiajun/moviedb/static/'
 
 TEMPLATES = [
     {
