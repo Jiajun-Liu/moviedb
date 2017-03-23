@@ -18,7 +18,7 @@ class ProducerMovieDutyForm(forms.ModelForm):
 class CompanyMovieDutyForm(forms.ModelForm):
     class Meta:
         widgets = {
-            'company': ModelSelect2Multiple(url='company-autocomplete'),
+            'company': ModelSelect2(url='company-autocomplete'),
             'duty': ModelSelect2(url='duty-autocomplete'),
             'movie': ModelSelect2(url='movie-autocomplete')
         }
