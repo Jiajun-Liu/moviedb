@@ -4,6 +4,7 @@ from django.contrib import admin
 from . import views
 urlpatterns = [
     url(r'^batch_add_cmd/', views.batch_add_cmd),
+    url(r'^batch_add_cmd11m/', views.batch_add_cmd11m),
     url(r'^batch_add_pmd/', views.batch_add_pmd),
     url(r'^admin/', admin.site.urls),
 

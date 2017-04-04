@@ -26,6 +26,7 @@
     <script type="text/javascript" src="/static/autocomplete_light/select2.js"></script>
 
     <meta name="robots" content="NONE,NOARCHIVE"/>
+
 </head>
 
 
@@ -140,7 +141,11 @@
                                     <select data-autocomplete-light-function="select2"
                                             data-autocomplete-light-url="/info_collect/movie-autocomplete/"
                                             id="id_movie" name="movie" required>
-                                        <option value="" selected="selected">---------</option>
+                                        {% if movie %}
+                                            <option value="{{ movie.0 }}" selected="selected">{{ movie.1 }}</option>
+                                        {% else %}
+                                            <option value="" selected="selected">---------</option>
+                                        {% endif %}
                                     </select>
 
 
@@ -212,8 +217,8 @@
 
                     <div>
                         {% if added %}
-Added {{ added }}.
-{% endif %}
+                            Added {{ added }}.
+                        {% endif %}
                     </div>
 
 
@@ -245,14 +250,15 @@ Added {{ added }}.
     <div id="footer"></div>
 </div>
 <!-- END Container -->
-        <div>
+<div>
 
-        <ul>
-            <li>
-                <a href="/info_collect/batch_add_cmd/" class="addlink">Batch add company movie duty</a>
-                <a href="/info_collect/batch_add_pmd/" class="addlink">Batch add producer movie duty</a>
-            </li>
-        </ul>
-    </div>
+    <ul>
+        <li>
+            <p><a href="/info_collect/batch_add_cmd/" class="addlink">Batch add company movie duty</a></p>
+            <p><a href="/info_collect/batch_add_pmd/" class="addlink">Batch add producer movie duty</a></p>
+            <p><a href="/info_collect/batch_add_cmd11m/" class="addlink">Batch add company movie duty 1-1-M</a></p>
+        </li>
+    </ul>
+</div>
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 <html lang="en-us">
 <head>
-    <title>Batch add producer movie duty | Movie Company Industry Database Administration</title>
+    <title>Batch add company movie duty 1-1-M| Movie Company Industry Database Administration</title>
     <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css"/>
     <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css"/>
 
@@ -26,10 +26,11 @@
     <script type="text/javascript" src="/static/autocomplete_light/select2.js"></script>
 
     <meta name="robots" content="NONE,NOARCHIVE"/>
+
 </head>
 
 
-<body class=" app-info_collect model-producermovieduty change-form"
+<body class=" app-info_collect model-companymovieduty change-form"
       data-admin-utc-offset="28800">
 
 <!-- Container -->
@@ -67,19 +68,19 @@
     <div class="breadcrumbs">
         <a href="/admin/">Home</a>
         &rsaquo; <a href="/admin/info_collect/">Info_Collect</a>
-        &rsaquo; <a href="/admin/info_collect/producermovieduty/">Producer movie dutys</a>
-        &rsaquo; Add producer movie duty
+        &rsaquo; <a href="/admin/info_collect/companymovieduty/">Company movie dutys</a>
+        &rsaquo; Add company movie duty
     </div>
 
 
     <!-- Content -->
     <div id="content" class="colM">
 
-        <h1>Add producer movie duty</h1>
+        <h1>Add company movie duty</h1>
         <div id="content-main">
 
 
-            <form enctype="multipart/form-data" action="" method="post" id="batch_producermovieduty_form"
+            <form enctype="multipart/form-data" action="" method="post" id="batch_companymovieduty_form"
                   novalidate>
                 {% csrf_token %}
 
@@ -89,33 +90,33 @@
                     <fieldset class="module aligned ">
 
 
-                        <div class="form-row field-producer">
+                        <div class="form-row field-company">
 
 
                             <div>
 
 
-                                <label class="required" for="id_producer">Producer:</label>
+                                <label class="required" for="id_company">Company:</label>
 
 
                                 <div class="related-widget-wrapper">
-                                    <select multiple="multiple" data-autocomplete-light-function="select2"
-                                            data-autocomplete-light-url="/info_collect/producer-autocomplete/"
-                                            id="id_producer" name="producer" required>
+                                    <select data-autocomplete-light-function="select2"
+                                            data-autocomplete-light-url="/info_collect/company-autocomplete/"
+                                            id="id_company" name="company" required>
                                         <option value="">---------</option>
                                     </select>
 
 
-                                    <a class="related-widget-wrapper-link change-related" id="change_id_producer"
-                                       data-href-template="/admin/info_collect/producer/__fk__/change/?_to_field=id&amp;_popup=1"
-                                       title="Change selected producer">
+                                    <a class="related-widget-wrapper-link change-related" id="change_id_company"
+                                       data-href-template="/admin/info_collect/prodcompany/__fk__/change/?_to_field=id&amp;_popup=1"
+                                       title="Change selected prod company">
                                         <img src="/static/admin/img/icon-changelink.svg" alt="Change"/>
                                     </a>
 
 
-                                    <a class="related-widget-wrapper-link add-related" id="add_id_producer"
-                                       href="/admin/info_collect/producer/add/?_to_field=id&amp;_popup=1"
-                                       title="Add another prod producer">
+                                    <a class="related-widget-wrapper-link add-related" id="add_id_company"
+                                       href="/admin/info_collect/prodcompany/add/?_to_field=id&amp;_popup=1"
+                                       title="Add another prod company">
                                         <img src="/static/admin/img/icon-addlink.svg" alt="Add"/>
                                     </a>
 
@@ -140,9 +141,8 @@
                                     <select data-autocomplete-light-function="select2"
                                             data-autocomplete-light-url="/info_collect/movie-autocomplete/"
                                             id="id_movie" name="movie" required>
-
                                         {% if movie %}
-                                            <option value="{{movie.0}}" selected="selected">{{movie.1}}</option>
+                                            <option value="{{ movie.0 }}" selected="selected">{{ movie.1 }}</option>
                                         {% else %}
                                             <option value="" selected="selected">---------</option>
                                         {% endif %}
@@ -170,44 +170,6 @@
 
                         </div>
 
-                        <div class="form-row field-company">
-
-
-                            <div>
-
-
-                                <label class="required" for="id_movie">Company:</label>
-
-
-                                <div class="related-widget-wrapper">
-                                    <select data-autocomplete-light-function="select2"
-                                            data-autocomplete-light-url="/info_collect/company-autocomplete/"
-                                            id="id_company" name="company" required>
-                                        <option value="" selected="selected">---------</option>
-                                    </select>
-
-
-                                    <a class="related-widget-wrapper-link change-related" id="change_id_company"
-                                       data-href-template="/admin/info_collect/company/__fk__/change/?_to_field=id&amp;_popup=1"
-                                       title="Change selected company">
-                                        <img src="/static/admin/img/icon-changelink.svg" alt="Change"/>
-                                    </a>
-
-
-                                    <a class="related-widget-wrapper-link add-related" id="add_id_company"
-                                       href="/admin/info_collect/company/add/?_to_field=id&amp;_popup=1"
-                                       title="Add another company">
-                                        <img src="/static/admin/img/icon-addlink.svg" alt="Add"/>
-                                    </a>
-
-
-                                </div>
-
-
-                            </div>
-
-                        </div>
-
                         <div class="form-row field-duty">
 
 
@@ -218,7 +180,7 @@
 
 
                                 <div class="related-widget-wrapper">
-                                    <select multiple="multiple"  data-autocomplete-light-function="select2"
+                                    <select multiple="multiple" data-autocomplete-light-function="select2"
                                             data-autocomplete-light-url="/info_collect/duty-autocomplete/" id="id_duty"
                                             name="duty" required>
                                         <option value="">---------</option>
@@ -264,7 +226,7 @@
                             id="django-admin-form-add-constants"
                             src="/static/admin/js/change_form.js"
 
-                            data-model-name="producermovieduty"
+                            data-model-name="companymovieduty"
                     >
                     </script>
 
@@ -288,15 +250,15 @@
     <div id="footer"></div>
 </div>
 <!-- END Container -->
-        <div>
+<div>
 
-        <ul>
-            <li>
-                <p><a href="/info_collect/batch_add_cmd/" class="addlink">Batch add company movie duty</a></p>
-                <p><a href="/info_collect/batch_add_pmd/" class="addlink">Batch add producer movie duty</a></p>
-                <p><a href="/info_collect/batch_add_cmd11m/" class="addlink">Batch add company movie duty 1-1-M</a></p>
-            </li>
-        </ul>
-    </div>
+    <ul>
+        <li>
+            <p><a href="/info_collect/batch_add_cmd/" class="addlink">Batch add company movie duty</a></p>
+            <p><a href="/info_collect/batch_add_pmd/" class="addlink">Batch add producer movie duty</a></p>
+            <p><a href="/info_collect/batch_add_cmd11m/" class="addlink">Batch add company movie duty 1-1-M</a></p>
+        </li>
+    </ul>
+</div>
 </body>
 </html>
