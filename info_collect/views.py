@@ -109,9 +109,9 @@ def batch_add_cmd(request):
             # except Exception as e:
             #    print(e)
 
-        return render(request, 'batch_add_cmd.html', {'added': added, 'movie': request.session['movie']})
+        return render(request, 'batch_add_cmd.html', {'added': added, 'movie': request.session.get('movie')})
     else:
-        return render(request, 'batch_add_cmd.html', {'movie': request.session['movie']})
+        return render(request, 'batch_add_cmd.html', {'movie': request.session.get('movie')})
 
 
 @login_required
@@ -135,9 +135,9 @@ def batch_add_cmd11m(request):
             # except Exception as e:
             #    print(e)
 
-        return render(request, 'batch_add_cmd11m.html', {'added': added, 'movie': request.session['movie']})
+        return render(request, 'batch_add_cmd11m.html', {'added': added, 'movie': request.session.get('movie')})
     else:
-        return render(request, 'batch_add_cmd11m.html', {'movie': request.session['movie']})
+        return render(request, 'batch_add_cmd11m.html', {'movie': request.session.get('movie')})
 
 
 @login_required
@@ -160,6 +160,6 @@ def batch_add_pmd(request):
         else:
             added = ['The number of producers and duties must match']
 
-        return render(request, 'batch_add_pmd.html', {'added': added, 'movie': request.session['movie']})
+        return render(request, 'batch_add_pmd.html', {'added': added, 'movie': request.session.get('movie')})
     else:
-        return render(request, 'batch_add_pmd.html', {'movie': request.session['movie']})
+        return render(request, 'batch_add_pmd.html', {'movie': request.session.get('movie')})
