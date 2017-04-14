@@ -90,7 +90,6 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def batch_add_cmd(request):
-
     if request.method == 'POST':
         movie = Movie.objects.get(pk=request.POST['movie'])
         request.session['movie'] = (movie.id, str(movie))
@@ -116,7 +115,6 @@ def batch_add_cmd(request):
 
 @login_required
 def batch_add_cmd11m(request):
-
     if request.method == 'POST':
         movie = Movie.objects.get(pk=request.POST['movie'])
         request.session['movie'] = (movie.id, str(movie))
@@ -150,6 +148,11 @@ def batch_add_pmd(request):
         movie = Movie.objects.get(pk=request.POST['movie'])
         request.session['movie'] = (movie.id, str(movie))
 
+        if company:
+            request.session['prodcomp'] = (company.id, str(company))
+        else:
+            request.session['prodcomp'] = None
+
         if dl and len(dl) > 0 and len(dl) == len(pl):  # multiple duty/producer pairs
 
             for idx in range(len(dl)):
@@ -160,6 +163,8 @@ def batch_add_pmd(request):
         else:
             added = ['The number of producers and duties must match']
 
-        return render(request, 'batch_add_pmd.html', {'added': added, 'movie': request.session.get('movie')})
+        return render(request, 'batch_add_pmd.html', {'added': added, 'movie': request.session.get('movie'),
+                                                      'prodcomp': request.session.get('prodcomp')})
     else:
-        return render(request, 'batch_add_pmd.html', {'movie': request.session.get('movie')})
+        return render(request, 'batch_add_pmd.html', {'movie': request.session.get('movie'),
+                                                      'prodcomp': request.session.get('prodcomp')})

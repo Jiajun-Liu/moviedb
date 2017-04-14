@@ -183,7 +183,11 @@
                                     <select data-autocomplete-light-function="select2"
                                             data-autocomplete-light-url="/info_collect/company-autocomplete/"
                                             id="id_company" name="company" required>
-                                        <option value="" selected="selected">---------</option>
+                                        {% if prodcomp %}
+                                            <option value="{{prodcomp.0}}" selected="selected">{{prodcomp.1}}</option>
+                                        {% else %}
+                                            <option value="" selected="selected">---------</option>
+                                        {% endif %}
                                     </select>
 
 
