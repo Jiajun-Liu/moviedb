@@ -160,6 +160,12 @@ def batch_add_pmd(request):
                     pk=dl[idx]), company=company)
                 o.save()
                 added.append(o)
+        elif dl and len(dl) == 1 and len(pl) > 1:  # multiple duty/producer pairs
+            for idx in range(len(pl)):
+                o = ProducerMovieDuty(producer=Producer.objects.get(pk=pl[idx]), movie=movie, duty=Duty.objects.get(
+                    pk=dl[0]), company=company)
+                o.save()
+                added.append(o)
         else:
             added = ['The number of producers and duties must match']
 
