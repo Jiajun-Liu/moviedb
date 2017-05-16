@@ -143,6 +143,7 @@ def batch_add_pmd(request):
     if request.method == 'POST':
         added = []
         dl = request.POST.getlist('duty')
+        cd = request.POST.get('comp_duty')
         pl = request.POST.getlist('producer')
         company = ProdCompany.objects.get(pk=request.POST.get('company')) if request.POST.get('company') else None
         movie = Movie.objects.get(pk=request.POST['movie'])
@@ -153,24 +154,33 @@ def batch_add_pmd(request):
         else:
             request.session['prodcomp'] = None
 
+        dt=None
+        if cd:
+            dt = Duty.objects.get(pk=cd) if cd else None
+            request.session['comp_duty'] = (dt.id, dt.name)
+        else:
+            request.session['comp_duty'] = None
+
         if dl and len(dl) > 0 and len(dl) == len(pl):  # multiple duty/producer pairs
 
             for idx in range(len(dl)):
                 o = ProducerMovieDuty(producer=Producer.objects.get(pk=pl[idx]), movie=movie, duty=Duty.objects.get(
-                    pk=dl[idx]), company=company)
+                    pk=dl[idx]), company=company, comp_duty=dt)
                 o.save()
                 added.append(o)
         elif dl and len(dl) == 1 and len(pl) > 1:  # multiple duty/producer pairs
             for idx in range(len(pl)):
                 o = ProducerMovieDuty(producer=Producer.objects.get(pk=pl[idx]), movie=movie, duty=Duty.objects.get(
-                    pk=dl[0]), company=company)
+                    pk=dl[0]), company=company, comp_duty=dt)
                 o.save()
                 added.append(o)
         else:
             added = ['The number of producers and duties must match']
 
         return render(request, 'batch_add_pmd.html', {'added': added, 'movie': request.session.get('movie'),
-                                                      'prodcomp': request.session.get('prodcomp')})
+                                                      'prodcomp': request.session.get('prodcomp'),
+                                                      'comp_duty': request.session.get('comp_duty')})
     else:
         return render(request, 'batch_add_pmd.html', {'movie': request.session.get('movie'),
+                                                      'comp_duty': request.session.get('comp_duty'),
                                                       'prodcomp': request.session.get('prodcomp')})

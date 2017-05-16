@@ -38,8 +38,8 @@ class ProdCompanyAdmin(admin.ModelAdmin):
 
 
 class ProducerMovieDutyAdmin(admin.ModelAdmin):
-    fields = ('producer', 'movie', 'duty', 'company')
-    list_display = ('producer_name', 'movie_name', 'duty_name', 'company_name')
+    fields = ('producer', 'movie', 'duty', 'company', 'comp_duty')
+    list_display = ('producer_name', 'movie_name', 'duty_name', 'company_name', 'comp_duty_name')
     search_fields = ('producer__name', 'movie__title', 'duty__name', 'company__name')
 
     def producer_name(self, obj):
@@ -65,13 +65,21 @@ class ProducerMovieDutyAdmin(admin.ModelAdmin):
 
     company_name.short_description = u'Company'
 
+    def comp_duty_name(self, obj):
+        if obj.comp_duty:
+            return u'%s' % obj.comp_duty.name
+        else:
+            return 'None'
+
+    comp_duty_name.short_description = u'Company Duty'
+
     form = ProducerMovieDutyForm
 
 
 class CompanyMovieDutyAdmin(admin.ModelAdmin):
     fields = ('company', 'movie', 'duty')
     list_display = ('company_name', 'movie_name', 'duty_name')
-    search_fields = ('company__name', 'movie__name', 'duty__name')
+    search_fields = ('company__name', 'movie__title', 'duty__name')
 
     def company_name(self, obj):
         return u'%s' % obj.company.name
