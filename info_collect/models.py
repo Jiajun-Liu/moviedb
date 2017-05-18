@@ -55,15 +55,15 @@ class ProducerMovieDuty(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     duty = models.ForeignKey(Duty, on_delete=models.CASCADE)
     company = models.ForeignKey(ProdCompany, on_delete=models.CASCADE, default=None, null=True)
-    comp_duty = models.ForeignKey(Duty, on_delete=models.CASCADE, related_name='comp_duty')
+    comp_duty = models.ForeignKey(Duty, on_delete=models.CASCADE, related_name='comp_duty', null=True)
 
     def __unicode__(self):
         return '%s, %s, %s, %s, %s' % (self.producer.name, self.movie.title, self.duty.name, self.company.name if
-        self.company else None, self.comp_duty.name if self.company else None)
+        self.company else None, self.comp_duty.name if self.comp_duty else None)
 
     def __str__(self):
         return '%s, %s, %s, %s, %s' % (self.producer.name, self.movie.title, self.duty.name, self.company.name if
-        self.company else None, self.comp_duty.name if self.company else None)
+        self.company else None, self.comp_duty.name if self.comp_duty else None)
 
     class Meta:
         unique_together = ("producer", "movie", 'duty')
